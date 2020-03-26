@@ -1,4 +1,4 @@
 module.exports = {
   // -- Prismic repository GraphQL endpoint
-  apiEndpoint: 'https://oscms-demo.prismic.io/graphql',
+  apiEndpoint: 'https://open-source-medical-supplies.prismic.io/graphql',
 };
