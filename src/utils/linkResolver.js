@@ -4,7 +4,7 @@
 
 exports.linkResolver = function linkResolver(doc) {
   // Route for blog posts
-  if (doc.type === 'item') {
+  if (doc.type === 'medical_supply_item_detailed') {
     return '/item/' + doc.id;
   }
 

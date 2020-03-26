@@ -67,6 +67,10 @@ const ItemBody = ({ supplyItem }) => {
         <div>
             { RichText.asText(supplyItem.the_problem)}
         </div>
+        <div>
+            { RichText.asText(supplyItem.current_us_resources)}
+        </div>
+        <img src={supplyItem.item_image.url} />
       </div>
     </div>
   );
@@ -74,7 +78,7 @@ const ItemBody = ({ supplyItem }) => {
 
 export default (props) => {
   // Define the Item content returned from Prismic
-  const doc = props.data.prismic.allallMedical_supply_item_detaileds.edges.slice(0,1).pop();
+  const doc = props.data.prismic.allMedical_supply_item_detaileds.edges.slice(0,1).pop();
 
   if(!doc) return null;
 
