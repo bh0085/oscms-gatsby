@@ -64,9 +64,11 @@ const ItemBody = ({ supplyItem }) => {
         <h1 data-wio-id={ supplyItem._meta.id }>
           { RichText.asText(supplyItem.item_title) }
         </h1>
+        <h2>The Problem</h2>
         <div>
             { RichText.asText(supplyItem.the_problem)}
         </div>
+        <h2>Current Resources</h2>
         <div>
             { RichText.asText(supplyItem.current_us_resources)}
         </div>
