@@ -15,12 +15,14 @@ module.exports = {
         repositoryName: repo[1], // Loads the repo name from prismic configuration
         path: '/preview',
         previews: true,
-        pages: [{
-          type: 'Post',
-          match: '/blog/:uid',
-          path: '/blog-preview',
-          component: require.resolve('./src/templates/post.js')
-        }]
+        pages: [
+            {
+          type: 'Medical_supply_item_detailed',
+          match: '/item/:id',
+          path: '/item-preview',
+          component: require.resolve('./src/templates/supply_item.js')
+        }
+        ]
       }
     },
     `gatsby-plugin-sass`,

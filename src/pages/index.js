@@ -2,43 +2,39 @@ import React from 'react'
 import { RichText } from 'prismic-reactjs'
 import { graphql } from 'gatsby';
 import Layout from '../components/layouts'
-import BlogPosts from '../components/BlogPosts'
+import SupplyItems from '../components/SupplyItems'
 
-// Query for the Blog Home content in Prismic
 export const query = graphql`
 {
   prismic{
-    allBlog_homes(uid:null){
+    allMedical_supply_item_detaileds{
       edges{
         node{
           _meta{
             id
             type
           }
-          headline
-          description
-          image
-        }
-      }
-    }
-    allPosts(sortBy: date_DESC){
-      edges{
-        node{
-          _meta{
-            id
-            uid
-            type
+          item_title
+          item_image
+          the_problem
+          current_us_resources
+          worst_case_expectation
+          why_well_need_it
+          why_we_wont_need_it
+          engineering_requirements
+          assembly_fabrication_requirements
+          projects_resources
+          reviewed_designs_intro
+          reviewed_designs_item {
+            project_name
+            date_reviewed
+            reviewed_by
+            note
           }
-          title
-          date
-          body{
-            ... on PRISMIC_PostBodyText{
-              type
-              label
-              primary{
-                text
-              }
-            }
+          not_recommended_design_item {
+            project_name
+            reviewed_by
+            reason
           }
         }
       }
@@ -47,30 +43,26 @@ export const query = graphql`
 }
 `
 
-// Using the queried Blog Home document data, we render the top section
-const BlogHomeHead = ({ home }) => {  
-  const avatar = { backgroundImage: 'url(' + home.image.url +')' };
-  return (
-    <div className="home-header container" data-wio-id={ home._meta.id }>
-      <div className="blog-avatar" style={ avatar }>
-      </div>
-      <h1>{ RichText.asText(home.headline) }</h1>
-      <p className="blog-description">{ RichText.asText(home.description) }</p>
-    </div>
-  );
-};
+
+const Header = () => {
+    return (
+        <div>
+            <h1>OSCMS</h1>
+            <div>Mission statement.</div>
+        </div>
+
+    )
+
+}
 
 export default ({ data }) => {
-  // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0,1).pop();
-  const posts = data.prismic.allPosts.edges;
+  const items = data.prismic.allMedical_supply_item_detaileds.edges;
 
-  if(!doc) return null;
 
   return(
     <Layout>
-      <BlogHomeHead home={ doc.node } />
-      <BlogPosts posts={ posts }/>
+      <Header />
+      <SupplyItems supplyItems={ items }/>
     </Layout>
   )
 }

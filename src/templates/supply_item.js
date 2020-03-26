@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import Layout from '../components/layouts' 
-import { ImageCaption, Quote, Text } from '../components/slices'
 
 // Query for the custom content type in Prismic
 /*
@@ -16,35 +15,43 @@ for item in items:
     print(item)
 */
 export const query = graphql`
-query SupplyItemQuery($uid: String) {
+query SupplyItemQuery($id: String) {
   prismic{
-    allMedical_supply_item_detailed(uid: $uid){
+    allMedical_supply_item_detaileds(id: $id){
       edges{
         node{
           _meta{
             id
-            uid
             type
           }
-            item_title
-            item_image
-            the_problem
-            current_us_resources
-            worst_case_expectation
-            why_well_need_it
-            why_we_wont_need_it
-            engineering_requirements
-            assembly_fabrication_requirements
-            projects_resources
-            reviewed_designs_intro
-            reviewed_designs_item
-            not_recommended_design_item
+          item_title
+          item_image
+          the_problem
+          current_us_resources
+          worst_case_expectation
+          why_well_need_it
+          why_we_wont_need_it
+          engineering_requirements
+          assembly_fabrication_requirements
+          projects_resources
+          reviewed_designs_intro
+          reviewed_designs_item {
+            project_name
+            date_reviewed
+            reviewed_by
+            note
+          }
+          not_recommended_design_item {
+            project_name
+            reviewed_by
+            reason
           }
         }
       }
     }
   }
 }
+`
 // Display the title, date, and content of the Item 
 const ItemBody = ({ supplyItem }) => {
   return (
@@ -67,7 +74,7 @@ const ItemBody = ({ supplyItem }) => {
 
 export default (props) => {
   // Define the Item content returned from Prismic
-  const doc = props.data.prismic.allallMedical_supply_item_detailed.edges.slice(0,1).pop();
+  const doc = props.data.prismic.allallMedical_supply_item_detaileds.edges.slice(0,1).pop();
 
   if(!doc) return null;
 
