@@ -45,24 +45,46 @@ export const query = graphql`
 
 
 const Header = () => {
-    return (
-        <div>
-            <h1>OSCMS</h1>
-            <div>Mission statement.</div>
-        </div>
-
+  return (
+    <div>
+    <div><h2>Summary of COVID19 Situation & Supply Needs
+    </h2>
+    <h3>The Problem</h3>
+    <h3>Treating Covid 1</h3>
+    <h3>A Note About Safety and Liability</h3>
+    <h3>Good Samaritan Laws in the United States</h3>
+    </div>
+    <div>
+    
+    <h2>Feedback</h2>
+    </div><div>
+    <h2>Design, Manufacturing, & Engineering Projects</h2>
+    <h3>Supplies</h3>
+    <h4>PPE</h4>
+    <h4>Medical Supplies</h4>
+    <h3>Devices</h3>
+    </div>
+    <div>
+    <div>
+      <h2>FAQ</h2>
+    <h4>[TODO] There's nothing here!</h4>
+    </div>
+    </div>
+    </div>
     )
-
-}
-
-export default ({ data }) => {
-  const items = data.prismic.allMedical_supply_item_detaileds.edges;
-
-
-  return(
-    <Layout>
+    
+  }
+  
+  
+  export default ({ data }) => {
+    const items = data.prismic.allMedical_supply_item_detaileds.edges;
+    
+    
+    return(
+      <Layout>
       <Header />
       <SupplyItems supplyItems={ items }/>
-    </Layout>
-  )
-}
+      </Layout>
+      )
+    }
+    
