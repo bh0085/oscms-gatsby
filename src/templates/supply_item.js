@@ -29,8 +29,6 @@ query SupplyItemQuery($id: String) {
           the_problem
           current_us_resources
           worst_case_expectation
-          why_well_need_it
-          why_we_wont_need_it
           engineering_requirements
           assembly_fabrication_requirements
           projects_resources
