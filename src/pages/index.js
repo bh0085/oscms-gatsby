@@ -19,7 +19,6 @@ export const query = graphql`
           the_problem
           current_us_resources
           worst_case_expectation
-          why_we_wont_need_it
           engineering_requirements
           assembly_fabrication_requirements
           projects_resources
