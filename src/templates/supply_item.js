@@ -32,7 +32,6 @@ query SupplyItemQuery($id: String) {
           engineering_requirements
           assembly_fabrication_requirements
           projects_resources
-          reviewed_designs_intro
           reviewed_designs_item {
             project_name
             date_reviewed
