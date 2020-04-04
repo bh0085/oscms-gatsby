@@ -3,7 +3,7 @@ echo 'please wait, pushing CNAME to gh-pages'
 currentBranch=$( git rev-parse --abbrev-ref HEAD )
 currentTime=$(date +"%D_%I:%M_%p")
 # stash any changes
-git stash -ul -m $currentTime
+git stash push -ul -m $currentTime
 # switch to github pages branch
 git checkout gh-pages
 # create CNAME file and push
