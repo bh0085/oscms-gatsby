@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import Footer from './Footer'
-import '../../stylesheets/main.scss'
+import React, { Fragment } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import Footer from './Footer';
+import '../../stylesheets/main.scss';
+import MarkdownTemplate from '../markdown/homepage';
 
 export default props => (
   <StaticQuery
@@ -18,16 +19,16 @@ export default props => (
     `}
     render={ data => <Layout data={ data } { ...props }/> }
   />
-)
+);
 
 const Layout = ( props ) => {
   // Define the meta title and description
-  const title = props.data.site.siteMetadata.title
-  const description = props.data.site.siteMetadata.description
+  const title = props.data.site.siteMetadata.title;
+  const description = props.data.site.siteMetadata.description;
 
   // Load the Prismic edit button
   if(typeof window !== 'undefined' && window.prismic) {
-    window.prismic.setupEditButton()
+    window.prismic.setupEditButton();
   }
 
 	return(
@@ -40,9 +41,15 @@ const Layout = ( props ) => {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
       </Helmet>
       <main>
+        -----markdown start-------
+        <br />
+        <MarkdownTemplate/>
+        <br/>
+        -----markdown end-------
+        <br/>
         { props.children }
       </main>
       <Footer/>
     </Fragment>
-	)
-}
+	);
+};
