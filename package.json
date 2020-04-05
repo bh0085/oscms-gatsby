@@ -39,7 +39,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "now-build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public && sh post-deploy.sh"
+    "deploy": "gatsby build && gh-pages -d public && sh post-deploy.sh"
   },
   "repository": {
     "type": "git",
