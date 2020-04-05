@@ -1,1 +1,0 @@
-{"errors":[{"message":"Field \"path\" is not defined by type MarkdownRemarkFrontmatterFilterInput.","locations":[{"line":4,"column":32}]},{"message":"Cannot query field \"path\" on type \"MarkdownRemarkFrontmatter\".","locations":[{"line":7,"column":7}]}]}
